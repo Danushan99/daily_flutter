@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/detail.dart';
 import 'package:my_app/home.dart';
+import 'package:my_app/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/detail': (context) => DetailPage(),
       },
-      home: Home(),
+      home: ProviderHome(),
     );
   }
 }
