@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/detail.dart';
+
 import 'package:my_app/home.dart';
 import 'package:my_app/provider.dart';
 
@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routes: {
-        '/detail': (context) => DetailPage(),
-      },
+      routes: {},
       home: ProviderHome(),
     );
   }

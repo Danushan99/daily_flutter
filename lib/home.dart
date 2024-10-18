@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:my_app/detail.dart';
+
 
 class Home extends StatefulWidget {
   Home({super.key});
