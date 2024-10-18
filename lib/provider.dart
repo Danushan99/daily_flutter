@@ -13,7 +13,12 @@ class _ProviderHomeState extends State<ProviderHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          int latenum = num.last;
+          setState(() {
+            num.add(latenum + 1);
+          });
+        },
         child: const Row(
           children: [
             Icon(Icons.add),
