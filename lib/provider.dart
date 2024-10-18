@@ -8,12 +8,13 @@ class ProviderHome extends StatefulWidget {
 }
 
 class _ProviderHomeState extends State<ProviderHome> {
+  List<int> num = [1, 2, 3, 4];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Row(
+        child: const Row(
           children: [
             Icon(Icons.add),
             Text("add"),
@@ -26,13 +27,13 @@ class _ProviderHomeState extends State<ProviderHome> {
       body: SizedBox(
         child: Column(
           children: [
-            const Text("0", style: TextStyle(fontSize: 25)),
+            Text(num.last.toString(), style: TextStyle(fontSize: 25)),
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: num.length,
                 itemBuilder: (context, index) {
-                  return const Text(
-                    "1",
+                  return Text(
+                    num[index].toString(),
                     style: TextStyle(fontSize: 25),
                   );
                 },
