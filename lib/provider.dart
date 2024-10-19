@@ -13,47 +13,55 @@ class ProviderHome extends StatefulWidget {
 class _ProviderHomeState extends State<ProviderHome> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Row(
-          children: [
-            Icon(Icons.add),
-            Text("add"),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        title: const Text("Provider App"),
-      ),
-      body: Consumer<NumberListProvider>(
-        builder: (context, numbersListerProviderModel, child) => SizedBox(
-          child: Column(
-            children: [
-              Text(numbersListerProviderModel.numbers.last.toString(),
-                  //   num.last.toString(),
-                  style: TextStyle(fontSize: 25)),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: numbersListerProviderModel.numbers.length,
-                  itemBuilder: (context, index) {
-                    return Text(
-                      numbersListerProviderModel.numbers[index].toString(),
-                      style: TextStyle(fontSize: 25),
-                    );
-                  },
+    return Consumer<NumberListProvider>(
+        builder: (context, numberProviderModel, child) => Scaffold(
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  numberProviderModel.addNum();
+                },
+                child: const Row(
+                  children: [
+                    Icon(Icons.add),
+                    Text("add"),
+                  ],
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Nextscreen()));
-                  },
-                  child: Text("next")),
-            ],
-          ),
-        ),
-      ),
-    );
+              appBar: AppBar(
+                title: const Text("Provider App"),
+              ),
+              body: Consumer<NumberListProvider>(
+                builder: (context, numbersListerProviderModel, child) =>
+                    SizedBox(
+                  child: Column(
+                    children: [
+                      Text(numbersListerProviderModel.numbers.last.toString(),
+                          //   num.last.toString(),
+                          style: TextStyle(fontSize: 25)),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: numbersListerProviderModel.numbers.length,
+                          itemBuilder: (context, index) {
+                            return Text(
+                              numbersListerProviderModel.numbers[index]
+                                  .toString(),
+                              style: TextStyle(fontSize: 25),
+                            );
+                          },
+                        ),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const Nextscreen()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text("next screen"),
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+            ));
   }
 }

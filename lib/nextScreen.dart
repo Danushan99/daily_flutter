@@ -19,43 +19,44 @@ class Nextscreen extends StatefulWidget {
 class _NextscreenState extends State<Nextscreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Row(
-          children: [
-            Icon(Icons.add),
-            Text("add"),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        title: const Text("Provider App"),
-      ),
-      body: Consumer<NumberListProvider>(
-        builder: (context, numberProviderModel, child) => SizedBox(
-          child: Column(
-            children: [
-              Text(numberProviderModel.numbers.last.toString(),
-                  style: const TextStyle(fontSize: 25)),
-              Container(
-                height: 200,
-                width: double.maxFinite,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: numberProviderModel.numbers.length,
-                  itemBuilder: (context, index) {
-                    return Text(
-                      numberProviderModel.numbers[index].toString(),
-                      style: const TextStyle(fontSize: 25),
-                    );
-                  },
+    return Consumer<NumberListProvider>(
+        builder: (context, numberProviderModel, child) => Scaffold(
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {},
+                child: const Row(
+                  children: [
+                    Icon(Icons.add),
+                    Text("add"),
+                  ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
+              appBar: AppBar(
+                title: const Text("Provider App"),
+              ),
+              body: Consumer<NumberListProvider>(
+                builder: (context, numberProviderModel, child) => SizedBox(
+                  child: Column(
+                    children: [
+                      Text(numberProviderModel.numbers.last.toString(),
+                          style: const TextStyle(fontSize: 25)),
+                      Container(
+                        height: 200,
+                        width: double.maxFinite,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: numberProviderModel.numbers.length,
+                          itemBuilder: (context, index) {
+                            return Text(
+                              numberProviderModel.numbers[index].toString(),
+                              style: const TextStyle(fontSize: 25),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ));
   }
 }
