@@ -22,7 +22,9 @@ class _NextscreenState extends State<Nextscreen> {
     return Consumer<NumberListProvider>(
         builder: (context, numberProviderModel, child) => Scaffold(
               floatingActionButton: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  numberProviderModel.addNum();
+                },
                 child: const Row(
                   children: [
                     Icon(Icons.add),
