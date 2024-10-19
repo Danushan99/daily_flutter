@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/nextScreen.dart';
 
 class ProviderHome extends StatefulWidget {
   const ProviderHome({super.key});
@@ -43,7 +44,13 @@ class _ProviderHomeState extends State<ProviderHome> {
                   );
                 },
               ),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Nextscreen(num: num)));
+                },
+                child: Text("next")),
           ],
         ),
       ),
