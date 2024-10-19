@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:my_app/number_list_provider.dart';
+import 'package:provider/provider.dart';
 
 class Nextscreen extends StatefulWidget {
-  final List<int> num;
   const Nextscreen({
     super.key,
-    required this.num,
   });
 
   @override
@@ -21,12 +21,7 @@ class _NextscreenState extends State<Nextscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          int latenum = widget.num.last;
-          setState(() {
-            widget.num.add(latenum + 1);
-          });
-        },
+        onPressed: () {},
         child: const Row(
           children: [
             Icon(Icons.add),
@@ -37,26 +32,28 @@ class _NextscreenState extends State<Nextscreen> {
       appBar: AppBar(
         title: const Text("Provider App"),
       ),
-      body: SizedBox(
-        child: Column(
-          children: [
-            Text(widget.num.last.toString(),
-                style: const TextStyle(fontSize: 25)),
-            Container(
-              height: 200,
-              width: double.maxFinite,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: widget.num.length,
-                itemBuilder: (context, index) {
-                  return Text(
-                    widget.num[index].toString(),
-                    style: const TextStyle(fontSize: 25),
-                  );
-                },
+      body: Consumer<NumberListProvider>(
+        builder: (context, numberProviderModel, child) => SizedBox(
+          child: Column(
+            children: [
+              Text(numberProviderModel.numbers.last.toString(),
+                  style: const TextStyle(fontSize: 25)),
+              Container(
+                height: 200,
+                width: double.maxFinite,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: numberProviderModel.numbers.length,
+                  itemBuilder: (context, index) {
+                    return Text(
+                      numberProviderModel.numbers[index].toString(),
+                      style: const TextStyle(fontSize: 25),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

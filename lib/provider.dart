@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/nextScreen.dart';
+import 'package:my_app/number_list_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProviderHome extends StatefulWidget {
   const ProviderHome({super.key});
@@ -9,17 +11,11 @@ class ProviderHome extends StatefulWidget {
 }
 
 class _ProviderHomeState extends State<ProviderHome> {
-  List<int> num = [1, 2, 3, 4];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          int latenum = num.last;
-          setState(() {
-            num.add(latenum + 1);
-          });
-        },
+        onPressed: () {},
         child: const Row(
           children: [
             Icon(Icons.add),
@@ -30,28 +26,32 @@ class _ProviderHomeState extends State<ProviderHome> {
       appBar: AppBar(
         title: const Text("Provider App"),
       ),
-      body: SizedBox(
-        child: Column(
-          children: [
-            Text(num.last.toString(), style: TextStyle(fontSize: 25)),
-            Expanded(
-              child: ListView.builder(
-                itemCount: num.length,
-                itemBuilder: (context, index) {
-                  return Text(
-                    num[index].toString(),
-                    style: TextStyle(fontSize: 25),
-                  );
-                },
+      body: Consumer<NumberListProvider>(
+        builder: (context, numbersListerProviderModel, child) => SizedBox(
+          child: Column(
+            children: [
+              Text(numbersListerProviderModel.numbers.last.toString(),
+                  //   num.last.toString(),
+                  style: TextStyle(fontSize: 25)),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: numbersListerProviderModel.numbers.length,
+                  itemBuilder: (context, index) {
+                    return Text(
+                      numbersListerProviderModel.numbers[index].toString(),
+                      style: TextStyle(fontSize: 25),
+                    );
+                  },
+                ),
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Nextscreen(num: num)));
-                },
-                child: Text("next")),
-          ],
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Nextscreen()));
+                  },
+                  child: Text("next")),
+            ],
+          ),
         ),
       ),
     );
