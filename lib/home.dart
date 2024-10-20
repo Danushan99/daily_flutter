@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -11,6 +9,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isFavroite = false;
+  bool iscickedCheckbox = false;
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -96,6 +96,31 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(10),
                 child: const Text(
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap"),
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    Checkbox(
+                        value: iscickedCheckbox,
+                        onChanged: (value) {
+                          iscickedCheckbox = !iscickedCheckbox;
+                          setState(() {});
+                        }),
+                    Text("Type here"),
+                    Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: TextField(
+                        controller: _controller,
+                      ),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/detail',
+                              arguments: _controller.text);
+                        },
+                        child: Text("next")),
+                  ],
+                ),
               )
             ],
           ),
