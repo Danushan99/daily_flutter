@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_app/home.dart';
-import 'package:my_app/number_list_provider.dart';
-import 'package:my_app/provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,9 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => NumberListProvider())
-        ],
+        providers: [],
         child: MaterialApp(
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
