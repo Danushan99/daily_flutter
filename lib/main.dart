@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/create_password.dart';
 
 import 'package:my_app/home.dart';
 import 'package:my_app/number_list_provider.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // routes: {},
-          home: Home(),
+          home: CreatePassword(),
         ));
   }
 }
