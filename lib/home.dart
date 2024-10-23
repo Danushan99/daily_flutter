@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
               Stack(
                 children: [
                   Positioned(
-                      child: Container(
+                      child: SizedBox(
                     height: 500,
                     child: Stack(
                       children: [
@@ -64,12 +64,12 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "colombo city toure for developers",
+                      "France City Four For Students",
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "this is rondom text for dev",
+                      "explore the beauty of france",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.normal,
@@ -97,31 +97,18 @@ class _HomeState extends State<Home> {
                 child: const Text(
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap"),
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Checkbox(
-                        value: iscickedCheckbox,
-                        onChanged: (value) {
-                          iscickedCheckbox = !iscickedCheckbox;
-                          setState(() {});
-                        }),
-                    Text("Type here"),
-                    Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: TextField(
-                        controller: _controller,
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/detail',
-                              arguments: _controller.text);
-                        },
-                        child: Text("next")),
-                  ],
-                ),
-              )
+              // Container(
+              //   child: Column(
+              //     children: [
+              //       ElevatedButton(
+              //           onPressed: () {
+              //             Navigator.of(context).pushNamed('/detail',
+              //                 arguments: _controller.text);
+              //           },
+              //           child: Text("next")),
+              //     ],
+              //   ),
+              // )
             ],
           ),
         ),
